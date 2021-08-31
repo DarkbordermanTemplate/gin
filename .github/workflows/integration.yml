@@ -1,0 +1,25 @@
+name: Integration
+
+on: push
+
+jobs:
+  integration:
+    runs-on: ubuntu-18.04
+    container: golang:1.16.9
+
+    steps:
+    - name: Install container dependencies
+      run: |
+        apt-get update
+        apt-get install -y make software-properties-common gnupg2
+        add-apt-repository -y ppa:git-core/ppa
+        apt-get install -y git
+    - name: Repository checkout
+      uses: actions/checkout@v2
+    - name: Install service dependencies
+      run: |
+        make init
+    - name: Run ci bundle command
+      run: |
+        /go/bin/swag init
+        make ci-bundle

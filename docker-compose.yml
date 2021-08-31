@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  gin:
+    container_name: gin
+    build: .
+    image: gin:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 8080:8080

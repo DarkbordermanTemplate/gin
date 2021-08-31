@@ -1,0 +1,10 @@
+tests/
+.vscode/
+.github/
+*.env
+.gitignore
+docker-compose.yml
+Dockerfile
+LICENSE
+Makefile
+README.md
